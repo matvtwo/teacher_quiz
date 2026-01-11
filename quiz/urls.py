@@ -7,7 +7,7 @@ urlpatterns = [
     path("t/<int:test_id>/", views.take_test, name="take_test"),
 ]
 
-from .views_ai import generate_question
+from .views_ai import generate_questions_async
 urlpatterns += [
-    path("admin/ai/generate-question/", generate_question),
+    path("admin/ai/generate-questions/", generate_questions_async),
 ]
