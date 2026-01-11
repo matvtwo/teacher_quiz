@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Список тестов</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+</head>
+<body>
+  <h2>Привет, {{ nickname }}.</h2>
+  <h1>Доступные тесты</h1>
+
+  {% if tests %}
+    <ul>
+      {% for t in tests %}
+        <li>
+          <strong>{{ t.title }}</strong>
+          — <a href="/t/{{ t.id }}/">Пройти</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Пока нет тестов. Преподаватель может создать их в админке.</p>
+  {% endif %}
+
+  <p>
+    <a href="/">Сменить ник</a> |
+    <a href="/admin/">ЛК преподавателя</a>
+  </p>
+</body>
+</html>

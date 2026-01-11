@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>{{ test.title }}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+</head>
+<body>
+  <h2>{{ test.title }}</h2>
+  <p>Игрок: <strong>{{ nickname }}</strong></p>
+
+  <form method="post">
+    {% csrf_token %}
+
+    {% for q in questions %}
+      <fieldset style="margin-bottom:18px;">
+        <legend><strong>{{ forloop.counter }}.</strong> {{ q.text }}</legend>
+
+        <label><input type="radio" name="q_{{ q.id }}" value="1" required> {{ q.option_1 }}</label><br>
+        <label><input type="radio" name="q_{{ q.id }}" value="2"> {{ q.option_2 }}</label><br>
+        <label><input type="radio" name="q_{{ q.id }}" value="3"> {{ q.option_3 }}</label><br>
+        <label><input type="radio" name="q_{{ q.id }}" value="4"> {{ q.option_4 }}</label><br>
+      </fieldset>
+    {% endfor %}
+
+    <button type="submit">Завершить</button>
+  </form>
+
+  <p><a href="/tests/">Назад к тестам</a></p>
+</body>
+</html>
